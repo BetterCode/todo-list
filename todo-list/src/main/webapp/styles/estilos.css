@@ -1,0 +1,123 @@
+@charset "utf-8";
+/* CSS Document */
+
+.errorWrap { position: fixed; width: 405px; left: 50%; top: 40%; z-index: 20; }
+.errorBox { position: absolute; width: 405px; left: -50%; top: -50%; cursor: pointer; }
+.errorBoxTop { float: left; width: 405px; height: 17px; background-image:url("../images/errorBoxTop.png"); background-repeat: no-repeat; }
+.errorBoxCenter { float: left; width: 405px; padding: 0 0 10px 10px; background-image:url("../images/errorBoxCenter.png"); background-repeat: repeat-y; }
+.errorBoxBottom { float: left; width: 405px; height: 17px; background-image:url("../images/errorBoxBottom.png"); background-repeat: no-repeat; }
+#errorMessages { margin-left: 20px; width: 380px} 
+#errorMessages li { list-style-type: square; }
+
+.divLoad {position: fixed; width: 125px; height: 25px; padding: 0 5px 0 5px; top: 0; left: 45%; font-size: 13px; background-image: url("../images/loadBar.png"); background-repeat: no-repeat; z-index: 30;}
+.loadBarAjaxText { position: absolute; left: 40px; top: 5px; }
+
+body{ margin:0; border:0; padding:0}
+h1{color:#165b93; font-size:28pt; width:600px; border-bottom:1px solid #165b93; line-height: 38px }
+.main input[type="text"] { border: solid #797979 1px; }
+.main input[type="password"] { border: solid #797979 1px; }
+.main input[type="button"] { cursor:pointer; }
+.main{ float:left; width:600px}
+.box{ float:left; width:190px; margin:20px 10px 0 0}
+h3{size:16px; color:#165b93; margin:10px 0 0 0}
+p{ color:#797979; font-size:12px}
+.vejaMais{background:url("../images/vejaMais.png");display:block;height:21px;text-indent:-9999px;
+width:63px;}
+.ulVantagens{ float:left width:600px; color:#797979; font-size:12px; list-style:none}
+.ulVantagens li{background:url("../images/bullets.gif") no-repeat scroll left 7px transparent;line-height:20px;margin-left:10px;padding:0 0 2px 20px;}
+.compreJa{background:url("../images/btCompreja.jpg");display:block;height:21px;text-indent:-9999px;
+width:73px;}
+
+
+/* CSS página Adquira já Passo 1 */
+.spanSub{color:#797979; font-size:14pt; }
+.spanMaior{color:#797979; font-size:20pt; line-height: 20pt; margin-top: 10px; }
+.spanMaior input{ width:380px; height:22px; vertical-align: top; border: solid #797979 1px; }
+
+
+
+.ulPlanos{ float:left;width:600px; _margin-left:0}
+.ulPlanos input { margin: 8px 0 0 5px; }
+.ulPlanos li{ float:left; display:inline;list-style:none; width:111px; margin-left:5px; color:#fff}
+.ulPlanos li .btMais{ float:left; margin-top:5px; width:112px; height:22px; background:url("../images/btMaisDetalhes.jpg") no-repeat center}
+.ulPlanos .planoFundo{ float:left; width:111px; height:97px; background:url("../images/planoFundo.jpg") no-repeat center}
+.ulPlanos .planoPreco{ float:left; width:111px; height:40px; margin-top: 27px; margin-left: 5px; font-size: 22px; color: #2782B7; font-weight: bold; }
+
+
+.divBox{ position:relative; float:left; color:#797979; width:588px; height:57px; background:url(../images/fundoDiv1.jpg) no-repeat center; margin-top:30px}
+.divBox input[type="text"] { border: solid #797979 1px; }
+.tituloDiv{ float:left; background-color:#fff; padding:0 5px; margin:-10px 0 0 10px; font-size:14px; font-weight:bold; display:inline; position:relative; z-index:10}
+.tituloDiv input[type="text"] { border: 2px solid red;}
+
+.divBoxDominio{ position:relative; float:left; color:#797979; width:588px; margin-top: 20px; }
+.spanErroDominio { font-size: 14px; color:#c02020 }
+
+.btBuscar{ float:right; width:78px; height:22px; margin-left:10px; background:url(../images/btBuscar.gif) no-repeat center}
+.btPesquisar{ width:73px; height:22px; margin-left:10px; background:url(../images/btPesquisar.jpg) no-repeat center; text-indent:-99999px; overflow:hidden }
+.btOk { width:44px; height:22px; margin: 0 5px 0 5px; background:url(../images/btOk.gif) no-repeat center; text-indent:-99999px; overflow:hidden }
+
+
+.divBoxDados{ position:relative; float:left; color:#797979; width:588px; height:140px; background:url(../images/fundoDados.jpg) no-repeat center; font-size: 12px; line-height: 20px; margin-top: 30px;}
+.ulForm{ float:left;list-style:none; width:600px;position:relative; z-index:10; margin-left: 20px; _margin:0;}
+.ulForm input[type="text"] { border: solid #797979 1px; }
+.ulForm li{ float:left; width:280px; height: 22px; margin:5px 0;}
+.ulForm .liMaior{width:320px;}
+.ulForm .liOpcao{ width:300px}
+.ulForm li label{ float:left; width:60px; _padding-left:10px}
+.ulForm li .labelData{ float:left; width:80px;}
+.ulForm li .inputMaior{ width:240px}
+
+.divEnd{ position:relative; float:left; color:#797979; width:588px; height:170px; background:url("../images/fundoEnd.jpg") no-repeat center; margin-top:30px; font-family: serif; font-size: 12px; line-height: 20px;}
+.ulEnd{ float:left;width:600px; margin-left:15px; _margin-left:0; }
+.ulEnd input[type="text"] { border: solid #797979 1px; }
+.ulEnd select { border: solid #797979 1px; background-color: transparent;}
+.ulEnd option { padding: 0 3px 0 3px; }
+.ulEnd li { float:left; list-style:none; margin:5px 5px; }
+.ulEnd .liMaior{width:580px;}
+.ulEnd label{ float:left; margin-right:10px}
+.ulEnd .inputEnd{ float:left;}
+.ulEnd .liEnd{ width:300px}
+.btEnd{ float:left; width:125px; height:22px;background:url("../images/btEnd.gif") no-repeat center; margin-left:20px;}
+.btAvancar{ float:right; width:125px; height:32px; background:url("../images/btAvancar.gif") no-repeat center; margin:20px 0 0 0; text-indent:-99999px; overflow:hidden;}
+.btEntrar{ width:55px; height:22px; background:url("../images/btEntrar.gif") no-repeat center; margin:0 20px 0  0; text-indent:-99999px; overflow:hidden; cursor: pointer;}
+.btValidar{ width:80px; height:22px; background:url("../images/btValidar.gif") no-repeat center; margin:0 20px 0  0; text-indent:-99999px; overflow:hidden; cursor: pointer;}
+.btComprar{ float:right; width:73px; height:21px; background:url("../images/btCompreja.jpg") no-repeat center; margin:20px 20px 0 0; text-indent:-99999px; overflow:hidden;}
+
+
+/* Painel controle */
+.divCon{ position:relative; float:left; color:#797979; width:588px; height:101px; background:url("../images/fundoCon.jpg") no-repeat center; margin-top:30px}
+.ulCon{float:left;list-style:none; width:600px;position:relative; z-index:10; margin-left: 20px; _margin-left:10px;}
+.ulCon li{ float:left; width:300px; margin:5px 0}
+.ulCon .liMaior{ width:230px}
+.ulCon li label{ margin-right:10px}
+.ulCon .link{ color:#2783b7; font-size:14px; text-decoration:none; font-weight:bold}
+.ulCon .link:hover{ text-decoration:underline}
+.linkEsqueciSenha{ color:#2783b7; font-style:italic; text-decoration:none; font-weight:bold}
+.linkEsqueciSenha:hover{ text-decoration:underline}
+
+.divAtivosTop{ position:relative; float:left; width:588px; height: 28px; background:url(../images/fundoTop.jpg) no-repeat center; margin-top:30px; }
+.divAtivosMid{ position:relative; float:left; color:#797979; width:588px; font-size:14px; padding-bottom: 30px; background:url(../images/fundoMid.jpg) repeat-y center;}
+.divAtivosBot{ position:relative; float:left; width:588px; height: 27px; background:url(../images/fundoBot.jpg) no-repeat center;}
+
+.cod{ float:left; font-size:12px; color:#00aeef; padding:0 0 0 10px}
+.dominio{font-size:14px; float:left; padding:0 10px}
+.btGerenciar{ float:left; background:url(../images/btGerenciar.gif) no-repeat center; width:125px; height:22px; overflow:hidden}
+.ulTitulos{ float:left; margin-left:-30px; _margin-left:10px; list-style:none; width:550px}
+.ulTitulos li{ width:350px;}
+.ulTitulos li span{ float:left; margin-bottom:2px}
+.ulEmAberto li { height: 19px; border-left: 1px solid #00aeef; padding-left: 10px;}
+.btImprimir{ float: right; background:url(../images/btImprimir.gif) no-repeat center; width:82px; height:17px; text-indent:-99999px; overflow:hidden}
+
+.divCon{ position:relative; float:left; color:#797979; width:588px; height:101px; background:url("../images/fundoCon.jpg") no-repeat center; }
+.ulAlt{float:left;list-style:none; width:600px;position:relative; z-index:10; margin-left: 20px; _margin-left:10px; }
+.ulAlt .itemSimples { width: 220px;}
+.ulAlt li{ float:left; margin:5px 5px}
+.ulAlt .liMaior{ width:530px}
+.ulAlt label{ margin-right:10px; }
+.ulAlt li .btAlterar{float: right; background:url(../images/btAlterar.gif) no-repeat center; width:55px; height:22px; text-indent:-99999px; overflow:hidden; margin: 5px 18px 0 0; cursor: pointer;}
+.ulAlt .libtAlterar{ width:550px; _margin:-2px -10px 0 0; margin-top:-2px}
+
+
+
+
+

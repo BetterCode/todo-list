@@ -1,0 +1,31 @@
+<project name="kyros-prototipo-vraptor">
+
+	<target name="clean" description="Clean">
+		<antcall target="mvn">
+			<param name="mvn.command" value="clean" />
+		</antcall>
+	</target>
+
+	<target name="install" description="Install" depends="clean">
+		<antcall target="mvn">
+			<param name="mvn.command" value="install" />
+		</antcall>
+	</target>
+	
+    <target name="eclipse:eclipse" description="Eclipse">
+        <antcall target="mvn">
+			<param name="mvn.command" value="eclipse:clean" />
+            <param name="mvn.command" value="eclipse:eclipse" />
+        </antcall>
+    </target>
+    
+
+	<target name="mvn">
+		<exec executable="${mvn.executable}" dir="..">
+			<arg value="${mvn.command}" />
+			<arg value="-P${mvn.profile}" />
+			<arg value="-Dmaven.test.skip=${mvn.test.skip}" />
+		</exec>
+	</target>
+	
+</project>

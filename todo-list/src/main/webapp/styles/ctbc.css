@@ -1,0 +1,128 @@
+@charset "utf-8";
+/*
+	CSS Document
+	WEBROOM - Solucoes Interativas
+	Site: www.webroom.com.br - E-mail: webroom@webroom.com.br
+	Data: Fevereiro, 2010
+	Designer de Intehrface: Junio C. Santos
+	Programador de Interface: Andre Amaral (www.andreamaral.net)
+*/
+
+* { border:0; padding:0; margin:0; text-indent:0; list-style:none; text-decoration:none}
+html, body { width:100%; height:100%}
+body { font-size:12px; font-family:Arial,sans-serif; line-height:16px; color:#666; background:#EAEAEA url('../img/bkg.jpg') fixed top}
+* html wrap {height:100%}
+h1, h2, h3, h4, h5, h6 { font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif}
+a { color:#797979}
+
+/* Estrutura */
+.wrap { position: relative; /*background:url('../img/bg_wrap.png') top; */ width:770px; padding:0 10px 0 10px; text-align:left; min-height:100%;margin:0 auto}
+.contentWrap { float: left; width: 600px; margin: 20px 0 120px 20px; }
+a.saiba_mais, .saiba_mais a { display:block; text-indent:-9999px; background:url('../img/bt_veja_mais.png'); width:63px; height:21px}
+a.saiba_mais:hover, .saiba_mais a:hover { background:url('../img/bt_veja_mais_hover.png');}
+
+/* Forms */
+.select { color:#666; font-size:12px; background:transparent}
+.txtfield { font-size:11px; color:#797979; padding:2px}
+.bt_padrao { font-family:"Lucida Sans", "Lucida Grande", sans-serif; font-size:12px; display:block; background-color:#165b93; font-weight:bold; text-transform:uppercase; color:#fff; padding:6px 3px; border-radius:5px; -webkit-border-radius:5px; -moz-border-radius:5px; cursor:pointer}
+
+
+/* Barra topo de utilitarios */
+.content_barra_utilitarios { background:url('../img/bg_barra_top.jpg'); height:23px}
+.barra_utilitarios { color:#fff; font-size:11px; width:755px; margin:0 auto; padding-top:5px}
+.barra_utilitarios li { float:left; margin-right:12px}
+.barra_utilitarios .sac { float:right}
+.barra_utilitarios .trocar_perfil { padding-left:35px; margin-right:0}
+.barra_utilitarios .trocar_perfil a { background:url('../img/icon_trocar_perfil.png') left center no-repeat; padding-left:13px}
+.barra_utilitarios a { color:#fff}
+.barra_utilitarios a:hover { text-decoration:underline}
+
+/* Header */
+.header { padding-top:5px; height:89px; position:relative}
+.header .logo_type { float:left}
+.header .nav { float:right; padding-top:10px; border-bottom:1px solid #d0d0d0; overflow:hidden; height:30px}
+.header .nav li { float:left; margin-left:2px; height:30px}
+.header .nav a { font-family:"Lucida Sans Unicode", sans-serif; font-size:12px; background:url('../img/bg_meio.png') repeat-x; height:23px; float:left; line-height:23px; padding:0 5px; margin-top:7px}
+.nav .bg_left, .nav .bg_right { background:url('../img/bg_menu.png') no-repeat; width:5px; height:24px; float:left; margin-top:7px}
+.nav .bg_right { background-position:-10px top}
+.nav .ativo a,.nav li:hover a { color:#FFF; line-height:30px; background:url('../img/bg_hover.png') repeat-x; height:30px; margin-top:0}
+.nav .ativo .bg_left, .nav .ativo .bg_right, .nav li:hover .bg_left, .nav li:hover .bg_right { background:url('../img/sprites_hover.png') no-repeat; width:5px; height:30px; margin-top:0}
+.nav li:hover .bg_right, .nav .ativo .bg_right { background-position:-10px top}
+
+/* Menu */
+.content_menu { height:29px}
+.content_menu .bg_left, .content_menu .bg_right { background:url('../img/bg_menu2.png') no-repeat; width:5px; height:27px; float:left}
+.content_menu .bg_right { background-position:-10px top}
+.menu { background:url('../img/bg_menu_meio.png') repeat-x; height:27px; float:left; overflow:hidden; width:760px}
+.menu li { float:left; padding:0 25px 0 25px}
+.menu a { font-family:"Lucida Sans Unicode", sans-serif; line-height:25px; text-shadow:#FFF 1px 2px 1px}
+
+.bg_busca { margin-left:2px}
+.busca { background:url('../img/bg_meio.png') repeat-x; float:left; width:235px; height:23px}
+.busca ol { padding:3px 0 0 5px}
+.busca li { float:left}
+.busca .txtfield { background:transparent; padding-right:22px; width:232px; height:17px}
+.busca li:first-child { background:transparent url('../img/input_busca2.png') no-repeat}
+.header .nav ol li, .header .nav li.search, .header .nav li.search:hover { height:20px; margin:0}
+.header .nav li.search, .header .nav li.search:hover { margin-top:7px}
+.nav li.search:hover .bg_left, .nav li.search:hover .bg_right { background:url('../img/bg_menu.png') no-repeat; height:23px}
+.nav li.search:hover .bg_right { background-position:-10px top}
+.nav li.search .bg_left, .nav li.search .bg_right {padding:0; margin:0!important}
+
+
+/* Footer */
+.footer { position: absolute; bottom: 0; left: 10px; height:100px; width: 770px; border-top:1px solid #CFCFCF; }
+.footer ul { padding-top:25px; padding-left:68px}
+.footer a, .footer li { color:#A9A9A9; font-weight:bold; float:left}
+.footer li { padding-right:59px}
+.footer .algar { float:right; margin:-10px 10px 0 0}
+.footer a:hover { text-decoration:underline}
+
+
+/* busca */
+.search { float:right; height:30px}
+.bg_busca { margin-left:2px}
+.busca { background:url('../img/bg_meio_busca.png') repeat-x; float:left; width:300px; padding-top:2px; height:24px}
+.busca ol { padding:3px 0 0 5px}
+.busca li { float:left}
+.header .nav ol li { height:20px; margin:0}
+.search .bg_left, .search .bg_right {padding:0; margin:0!important}
+
+.search .bg_left, .search .bg_right { background:url('../img/bg_canto_busca.png') no-repeat; width:5px; height:26px; float:left}
+.search .bg_right { background-position:-5px top}
+
+/* Tres colunas */
+.colun_left { width:150px; overflow:hidden; float:left; }
+.colun_left ul { background:#cadfef; margin-bottom:2px; padding-top:10px}
+.colun_left ul li { min-height:25px; height:auto!important; height:25px}
+
+.colun_left a { font-size:11px; display:block; color:#424242; padding:7px 0 7px 10px}
+.colun_left a:hover {font-weight:bold!important; background:#358bbc url('../images/bullets2.gif') no-repeat 137px center}
+.colun_left li.ativo { font-weight:bold; color:#FFF; background:#358bbc url('../images/bullets2.gif') no-repeat 137px 12px}
+
+.colun_left ul { background:#cadfef; margin-bottom:2px; padding-top:10px}
+.colun_left ul li { min-height:29px; height:auto!important; height:29px}
+
+.colun_left ul li ul { background:url('../images/bg_menu_nivel2.png') no-repeat top; padding:7px 0 0 0; margin:0}
+.colun_left ul li ul li { background:#aecde4; border-bottom:1px solid #FFF}
+.colun_left ul li ul li a { background:url('../images/bullets.gif') 10px center no-repeat; padding-left:22px}
+
+.colun_left ul li ul li ul { background:url('../images/bg_menu_nivel3.png') no-repeat top; padding:7px 0 0 0; margin:0}
+.colun_left ul li ul li ul li { background:#91bbda}
+.colun_left ul li ul li ul li a { color:#FFF; background:url('../images/bullets2.gif') right center no-repeat; padding-left:28px; padding-right:10px; width:100px}
+
+.colun_left h3.page_atual a { display:block; font-size:12px; font-family:Arial; color:#165b93; background:url('../images/set.png') no-repeat left center; margin-bottom:5px; padding-left:10px}
+.colun_left .categoria { color:#fff; font-size:12px; font-family:Arial; font-weight:bold; line-height:27px; padding-left:13px; background:url('../images/bg_title_categoria.png') no-repeat; width:137px; height:25px; }
+
+/* Links Finais */
+ul.links_finais { background:#FFF; padding-top:0; float:left}
+ul.links_finais li { background:#cadfef url('../images/bg_finais.png') no-repeat; width:150px; height:25px; margin-bottom:2px}
+ul.links_finais a { font-weight:bold}
+ul.links_finais a:hover, ul.links_finais .ativo a { color:#FFF; background:#05649f url('../images/bg_finais_hover.png') no-repeat}
+
+/* Bread-crumb */
+.bread-crumb { height:15px; padding-top:15px; clear:both; margin-left:170px; font-size:11px; border-bottom:1px solid #165b93; }
+.bread-crumb strong { float:left; padding-right:5px}
+.bread-crumb ol { display:inline}
+.bread-crumb ol li { float:left; color:#165b93; padding-right:5px}
+.bread-crumb a { color:#165b93; padding-right:5px}

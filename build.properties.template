@@ -1,0 +1,9 @@
+mvn.executable=/usr/bin/mvn
+mvn.profile=dev
+mvn.test.skip=true
+
+jboss.home=/Volumes/Dados/eliezer/developer/apps/jboss-4.2.3.GA/
+jboss.config=default
+
+project.version=3.0.0-SNAPSHOT
+use.eclipse.build=true

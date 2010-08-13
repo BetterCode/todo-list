@@ -1,0 +1,46 @@
+<project name="build-jboss">
+	
+    <target name="install.and.jboss.deploy" depends="install" description="Install and copy .war to jboss">
+        <ant
+			target="jboss.deploy.copy.war"
+			inheritall="true"
+			inheritrefs="false">
+		</ant>
+    </target>
+	
+	<target name="jboss.deploy.copy.war" description="Copy .war to jboss">
+        <copy verbose="true" file="${module-dir}/target/${war.file.name}" todir="${jboss.home}/server/${jboss.config}/deploy" />
+    </target>
+
+    <target name="jboss.deploy.exploded.war" description="Copy .war to jboss">
+        <copy verbose="true" todir="${jboss.home}/server/${jboss.config}/deploy/${war.file.name}">
+            <fileset dir="${module-dir}/target/${ant.project.name}"/>
+        </copy>
+    </target>
+
+	<target name="jboss.copy.modify.files.target.TO.deploy.exploded">
+		<copy todir="${jboss.home}/server/${jboss.config}/deploy/${war.file.name}" overwrite="false">
+			<fileset dir="${basedir}/src/main/webapp" />
+		</copy>
+   </target>
+    
+    <target name="jboss.undeploy" description="Clean deploy file or dir">
+    	<delete dir="${jboss.home}/server/${jboss.config}/deploy/${war.file.name}" />
+    	<delete file="${jboss.home}/server/${jboss.config}/deploy/${war.file.name}" />
+    </target>
+    
+	<target name="install.and.jboss.deploy.exploded" description="Install all sub-projects and deploy exploded" depends="install">
+        <ant
+			target="jboss.deploy.exploded.war"
+			inheritall="true"
+			inheritrefs="false">
+		</ant>
+	</target>
+	
+	<target name="jboss.clean">
+		 <delete dir="${jboss.home}/server/${jboss.config}/tmp" />
+		 <delete dir="${jboss.home}/server/${jboss.config}/data" />
+		 <delete dir="${jboss.home}/server/${jboss.config}/work" />
+	</target>
+	    
+</project>
