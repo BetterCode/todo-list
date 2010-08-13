@@ -9,6 +9,7 @@ import lets.code.better.todo.dao.TaskDao;
 import lets.code.better.todo.facade.TaskFacade;
 import lets.code.better.todo.model.Task;
 import lets.code.better.todo.service.TaskService;
+import lets.code.better.todo.util.Transaction;
 
 import org.junit.Test;
 
@@ -33,16 +34,18 @@ public class TaskCreationTest {
 	public void taskPersistence(){
 		TaskDao taskDao = new TaskDao();
 		Task task = newTask();
-		taskDao.beginTransaction();
+		Transaction.begin();
 		taskDao.save(task);
-		taskDao.commitTransaction();
+		Transaction.commit();
 		assertNotNull(task.getId());
 	}
 	
 	@Test
 	public void taskCreationFromService(){
 		TaskService taskService = new TaskService();
+		Transaction.begin();
 		Task task = taskService.createTask(TITLE,DESCRIPTION,EXECUTOR,CREATED_AT);
+		Transaction.commit();
 		assertNotNull(task.getId());
 		assertEquals(TITLE, task.getTitle());
 		assertEquals(DESCRIPTION, task.getDescr());
@@ -55,7 +58,9 @@ public class TaskCreationTest {
 	@Test
 	public void taskCreationFromFacade(){
 		TaskFacade taskFacade = new TaskFacade();
+		Transaction.begin();
 		Task task = taskFacade.createTask(TITLE,DESCRIPTION,EXECUTOR,CREATED_AT);
+		Transaction.commit();
 		assertNotNull(task.getId());
 		assertEquals(TITLE, task.getTitle());
 		assertEquals(DESCRIPTION, task.getDescr());

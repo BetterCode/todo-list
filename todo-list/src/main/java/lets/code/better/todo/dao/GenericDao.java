@@ -3,7 +3,8 @@ package lets.code.better.todo.dao;
 import java.io.Serializable;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+
+import lets.code.better.todo.util.Transaction;
 
 import org.hibernate.Session;
 
@@ -25,25 +26,8 @@ public class GenericDao {
 		return (Session)entityManager().getDelegate();
 	}
 	
-	public void rollbackIfActive() {
-		EntityTransaction transaction = entityManager().getTransaction();
-		if (transaction != null && transaction.isActive()) {
-			transaction.rollback();
-			entityManager().close();
-		}
-	}
-
-	public void beginTransaction() {
-		entityManager().getTransaction().begin();
-	}
-
 	private EntityManager entityManager() {
-		return EntityManagerFactory.getEntityManager();
-	}
-
-	public void commitTransaction() {
-		entityManager().getTransaction().commit();
-		entityManager().close();
+		return Transaction.entityManager();
 	}
 
 }

@@ -13,7 +13,7 @@
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.connection.username" value="root" />
-			<property name="hibernate.connection.password" value="galo" />
+			<property name="hibernate.connection.password" value="" />
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/todotest" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
