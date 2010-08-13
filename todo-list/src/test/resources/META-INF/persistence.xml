@@ -6,8 +6,11 @@
 	version="1.0">
 
 	<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
+
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
 		<class>lets.code.better.todo.model.Task</class>
+		
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
@@ -17,9 +20,7 @@
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/todotest" />
 			<property name="hibernate.format_sql" value="true" />
 		</properties>
-		
-		 
-		
+
 	</persistence-unit>
 
 </persistence>
