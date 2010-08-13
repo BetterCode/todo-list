@@ -22,7 +22,7 @@ public class Transaction {
 
 	public static void rollbackIfActive() {
 		EntityTransaction transaction = ENTITY_MANAGER.get().getTransaction();
-		if (transaction == null || transaction.isActive()) {
+		if (transaction != null && transaction.isActive()) {
 			transaction.rollback();
 			ENTITY_MANAGER.get().close();
 		}
