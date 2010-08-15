@@ -14,7 +14,7 @@
 	<meta name="robots" content="index,follow" />
 	<meta name="rating" content="general" />
 	
-	<title><decorator:title default="Kyros Protótipo"/></title>	
+	<title><decorator:title default="TODO List"/></title>	
 	
 	<link href="<%=request.getContextPath()%>/styles/ctbc.css" rel="stylesheet" type="text/css" media="screen">
 	<link href="<%=request.getContextPath()%>/styles/estilos.css" rel="stylesheet" type="text/css" media="screen">
@@ -63,13 +63,9 @@
 </head>
 
 <body>
-	<%@ include file="barra_utilitarios.jsp" %>
 	
 	<div class="wrap">
-		<%@ include file="header.jsp" %>		
-		<%@ include file="menu.jsp" %>		
-
-		<%@ include file="menuLeft.jsp" %>
+		
 		<div class="contentWrap">
 			<decorator:body />
 		</div>
@@ -88,7 +84,6 @@
 		</div>
 		
 		<div style="clear: both;"></div>
-		<%@ include file="footer.jsp" %>
 	</div>
 </body>
 </html>
