@@ -3,6 +3,8 @@
 
 <h1>This are the tasks</h1>
 
+<p style="text-align:right"><a href="create" >New Task</a></p>
+
 <p style="padding: 23px; color:#55AA55">${message}</p>
 
 <c:forEach items="${taskList}" var="task">
@@ -15,16 +17,20 @@
 	  <li><strong>Description:</strong> ${task.descr}</li>
 	  <li>
 	  	<strong>Created At:</strong> 
-	  	<f:formatDate value="${task.createdAt}" type="DATE" pattern="dd/MM/yyyy"/>
+	  	<f:formatDate value="${task.createdAt}" type="DATE" pattern="dd/MM/yyyy hh:mm"/>
 	  </li>
-	  <li>
-	  	<strong>Started At:</strong> 
-	  	<f:formatDate value="${task.startedAt}" type="DATE" pattern="dd/MM/yyyy"/>
-	  </li>
-	  <li>
-	  	<strong>Finished At:</strong> 
-	  	<f:formatDate value="${task.finishedAt}" type="DATE" pattern="dd/MM/yyyy"/>
-	  </li>
+	  <c:if test="${task.started}">
+		  <li>
+		  	<strong>Started At:</strong> 
+		  	<f:formatDate value="${task.startedAt}" type="DATE" pattern="dd/MM/yyyy hh:mm"/>
+		  </li>
+	  </c:if>
+	  <c:if test="${task.finished}">
+		  <li>
+		  	<strong>Finished At:</strong> 
+		  	<f:formatDate value="${task.finishedAt}" type="DATE" pattern="dd/MM/yyyy hh:mm"/>
+		  </li>
+	  </c:if>
 	  <div style="padding:5px">
 	  <c:if test="${not task.started}">
 	    |
