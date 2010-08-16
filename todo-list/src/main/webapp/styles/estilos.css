@@ -60,10 +60,11 @@ width:73px;}
 .divBoxDados{ position:relative; float:left; color:#797979; width:588px; height:140px; background:url(../images/fundoDados.jpg) no-repeat center; font-size: 12px; line-height: 20px; margin-top: 30px;}
 .ulForm{ float:left;list-style:none; width:600px;position:relative; z-index:10; margin-left: 20px; _margin:0;}
 .ulForm input[type="text"] { border: solid #797979 1px; }
-.ulForm li{ float:left; width:280px; height: 22px; margin:5px 0;}
+.ulForm textarea { border: solid #797979 1px; }
+.ulForm li{ width:280px; margin:5px 0;}
 .ulForm .liMaior{width:320px;}
 .ulForm .liOpcao{ width:300px}
-.ulForm li label{ float:left; width:60px; _padding-left:10px}
+.ulForm li label{ float:left; width:65px; _padding-left:10px}
 .ulForm li .labelData{ float:left; width:80px;}
 .ulForm li .inputMaior{ width:240px}
 
