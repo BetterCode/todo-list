@@ -68,15 +68,16 @@ public class Task implements Serializable {
 	}
 
 	public Date getCreatedAt() {
-		return createdAt;
+		return createdAt == null ? null : new Date(createdAt.getTime());
 	}
 
 	public Date getStartedAt() {
-		return startedAt;
+		return startedAt == null ? null : new Date(startedAt.getTime());
 	}
 
 	public Date getFinishedAt() {
-		return finishedAt;
+		return finishedAt == null ? null : new Date(finishedAt.getTime());
+		
 	}
 
 	public boolean isStarted() {
