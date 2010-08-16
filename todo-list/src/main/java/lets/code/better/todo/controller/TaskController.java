@@ -51,8 +51,9 @@ public class TaskController {
 			Transaction.begin();
 			Task start = taskFacade.start(id);
 			result.include("message",
-					String.format("Task %s started.", start.getTitle()));
+					String.format("Task '%s' started.", start.getTitle()));
 			Transaction.commit();
+			result.redirectTo(TaskController.class).list();
 		} finally {
 			Transaction.rollbackIfActive();
 		}
@@ -63,8 +64,9 @@ public class TaskController {
 			Transaction.begin();
 			Task start = taskFacade.finish(id);
 			result.include("message",
-					String.format("Task %s finished.", start.getTitle()));
+					String.format("Task '%s' finished.", start.getTitle()));
 			Transaction.commit();
+			result.redirectTo(TaskController.class).list();
 		} finally {
 			Transaction.rollbackIfActive();
 		}

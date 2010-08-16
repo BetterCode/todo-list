@@ -24,9 +24,12 @@ public class TaskStartedTest {
 		
 		Transaction.begin();
 		Task task = taskService.createTask(TITLE,DESCRIPTION, EXECUTOR, CREATED_AT);
+		assertFalse(task.isStarted());
+
 		task = taskService.start(task.getId());
 		Transaction.commit();
 		
+		assertTrue(task.isStarted());
 		assertNotNull(task.getStartedAt());
 	}
 	
@@ -55,7 +58,7 @@ public class TaskStartedTest {
 
 		taskController.start(task.getId());
 		
-		assertEquals( String.format("Task %s started.",TITLE ),((String)result.included("message")) );
+		assertTrue( ( (String)result.included("message") ).contains(TITLE) );
 	}
 	
 }

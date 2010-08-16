@@ -4,8 +4,9 @@ import static lets.code.better.todo.task.TaskConstants.CREATED_AT;
 import static lets.code.better.todo.task.TaskConstants.DESCRIPTION;
 import static lets.code.better.todo.task.TaskConstants.EXECUTOR;
 import static lets.code.better.todo.task.TaskConstants.TITLE;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import lets.code.better.todo.controller.TaskController;
 import lets.code.better.todo.facade.TaskFacade;
 import lets.code.better.todo.model.Task;
@@ -25,9 +26,12 @@ public class TaskFinishedTest {
 		
 		Transaction.begin();
 		Task task = taskService.createTask(TITLE,DESCRIPTION, EXECUTOR, CREATED_AT);
+		assertFalse(task.isFinished());
+		
 		task = taskService.finish(task.getId());
 		Transaction.commit();
 		
+		assertTrue(task.isFinished());
 		assertNotNull(task.getFinishedAt());
 	}
 	
@@ -37,6 +41,7 @@ public class TaskFinishedTest {
 
 		Transaction.begin();
 		Task task = taskFacade.createTask(TITLE,DESCRIPTION, EXECUTOR, CREATED_AT);
+		
 		task = taskFacade.finish(task.getId());
 		Transaction.commit();
 		
@@ -55,7 +60,7 @@ public class TaskFinishedTest {
 		TaskController taskController = new TaskController(result);
 		taskController.finish(task.getId());
 		
-		assertEquals( String.format("Task %s finished.",TITLE ),((String)result.included("message")) );
+		assertTrue( ( (String)result.included("message") ).contains(TITLE) );
 	}
 	
 }
