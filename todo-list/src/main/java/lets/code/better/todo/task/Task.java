@@ -1,90 +1,89 @@
-package lets.code.better.todo.model;
+package lets.code.better.todo.task;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
 
 @Entity
-public class Task implements Serializable{
-	
+public class Task implements Serializable {
+
 	private static final long serialVersionUID = -2600316247367563474L;
+
+	@Transient
+	private static final Tasks tasks = new Tasks();
 
 	@Id
 	@GeneratedValue
 	private Integer id;
-	
+
 	@Column
 	private String title;
-	
+
 	@Column
 	private String descr;
-	
+
 	@Column
 	private String executor;
-	
+
 	@Column
 	private Date createdAt;
-	
+
 	@Column
 	private Date startedAt;
-	
+
 	@Column
 	private Date finishedAt;
-	
+
+	public Task(String title, String descr, String executor, Date createdAt) {
+		this.title = title;
+		this.descr = descr;
+		this.executor = executor;
+		this.createdAt = createdAt;
+	}
+
+	Task() { // usado pelo hibernate
+	}
+
 	public Integer getId() {
 		return id;
 	}
-	
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
+
 	public String getTitle() {
 		return title;
 	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getDescr() {
+
+	public String getDescription() {
 		return descr;
 	}
-	public void setDescr(String desc) {
-		this.descr = desc;
-	}
+
 	public String getExecutor() {
 		return executor;
 	}
-	public void setExecutor(String executor) {
-		this.executor = executor;
-	}
+
 	public Date getCreatedAt() {
 		return createdAt;
 	}
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
+
 	public Date getStartedAt() {
 		return startedAt;
 	}
-	public void setStartedAt(Date startedAt) {
-		this.startedAt = startedAt;
-	}
+
 	public Date getFinishedAt() {
 		return finishedAt;
 	}
-	public void setFinishedAt(Date finishedAt) {
-		this.finishedAt = finishedAt;
-	}
-	
-	public boolean isStarted(){
+
+	public boolean isStarted() {
 		return startedAt != null;
 	}
-	
-	public boolean isFinished(){
+
+	public boolean isFinished() {
 		return finishedAt != null;
 	}
 
@@ -121,10 +120,39 @@ public class Task implements Serializable{
 
 	@Override
 	public String toString() {
-		return String.format("Task [id=%s, title=%s, descr=%s, executor=%s, createdAt=%s, finishedAt=%s, startedAt=%s]", id, title, descr,
-				executor, createdAt, finishedAt, startedAt);
+		return String
+				.format("Task [id=%s, title=%s, descr=%s, executor=%s, createdAt=%s, finishedAt=%s, startedAt=%s]",
+						id, title, descr, executor, createdAt, finishedAt,
+						startedAt);
+	}
+
+	public static Task create(String title, String description, String executor) {
+		Task task = new Task(title, description, executor, new Date());
+		tasks.save(task);
+		return task;
+	}
+
+	public static Task findById(Integer id) {
+		return tasks.findById(Task.class, id);
+	}
+
+	public static List<Task> list() {
+		return tasks.list();
+	}
+
+	public Task start() {
+		startedAt = new Date();
+		tasks.save(this);
+		return this;
 	}
 	
-	
+	public Task finish() {
+		if (startedAt == null){
+			startedAt = new Date();
+		}
+		finishedAt = new Date();
+		tasks.save(this);
+		return this;
+	}
 
 }

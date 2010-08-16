@@ -9,7 +9,7 @@
 
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
-		<class>lets.code.better.todo.model.Task</class>
+		<class>lets.code.better.todo.task.Task</class>
 		
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect" />

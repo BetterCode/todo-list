@@ -14,7 +14,7 @@
 	  </li>
 	  <br/>
 	  <li><strong>Executor:</strong> ${task.executor}</li>
-	  <li><strong>Description:</strong> ${task.descr}</li>
+	  <li><strong>Description:</strong> ${task.description}</li>
 	  <li>
 	  	<strong>Created At:</strong> 
 	  	<f:formatDate value="${task.createdAt}" type="DATE" pattern="dd/MM/yyyy hh:mm"/>

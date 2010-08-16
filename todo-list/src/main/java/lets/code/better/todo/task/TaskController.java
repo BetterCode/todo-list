@@ -1,10 +1,7 @@
-package lets.code.better.todo.controller;
+package lets.code.better.todo.task;
 
-import java.util.Date;
 import java.util.List;
 
-import lets.code.better.todo.facade.TaskFacade;
-import lets.code.better.todo.model.Task;
 import lets.code.better.todo.util.Transaction;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
@@ -13,11 +10,9 @@ import br.com.caelum.vraptor.Result;
 public class TaskController {
 
 	private Result result;
-	private TaskFacade taskFacade;
 	
 	public TaskController(Result result) {
 		this.result = result;
-		taskFacade = new TaskFacade();
 	}
 	
 	public void create(){
@@ -26,7 +21,7 @@ public class TaskController {
 	public void createTask(String title, String description, String executor) {
 		try {
 			Transaction.begin();
-			taskFacade.createTask(title, description, executor, new Date());
+			Task.create(title, description, executor);
 			result.include("message", String.format("Task '%s' created.", title));
 			Transaction.commit();
 			result.redirectTo(TaskController.class).list();
@@ -38,7 +33,7 @@ public class TaskController {
 	public List<Task> list() {
 		try {
 			Transaction.begin();
-			List<Task> list = taskFacade.list();
+			final List<Task> list = Task.list();
 			Transaction.commit();
 			return list;
 		} finally {
@@ -49,9 +44,9 @@ public class TaskController {
 	public void start(Integer id) {
 		try {
 			Transaction.begin();
-			Task start = taskFacade.start(id);
+			final Task task = Task.findById(id).start();
 			result.include("message",
-					String.format("Task '%s' started.", start.getTitle()));
+					String.format("Task '%s' started.", task.getTitle()));
 			Transaction.commit();
 			result.redirectTo(TaskController.class).list();
 		} finally {
@@ -62,9 +57,9 @@ public class TaskController {
 	public void finish(Integer id) {
 		try {
 			Transaction.begin();
-			Task start = taskFacade.finish(id);
+			final Task task = Task.findById(id).finish();
 			result.include("message",
-					String.format("Task '%s' finished.", start.getTitle()));
+					String.format("Task '%s' finished.", task.getTitle()));
 			Transaction.commit();
 			result.redirectTo(TaskController.class).list();
 		} finally {

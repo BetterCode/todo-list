@@ -8,7 +8,9 @@
    <persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
       <provider>org.hibernate.ejb.HibernatePersistence</provider>
       <non-jta-data-source>todo</non-jta-data-source>
-      <class>lets.code.better.todo.model.Task</class>
+      
+      <class>lets.code.better.todo.task.Task</class>
+      
       <properties>
          <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
          <property name="hibernate.hbm2ddl.auto" value="update"/>

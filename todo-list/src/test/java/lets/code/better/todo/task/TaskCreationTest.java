@@ -1,75 +1,44 @@
 package lets.code.better.todo.task;
 
-import static org.junit.Assert.*;
-import static lets.code.better.todo.task.TaskConstants.*;
-
-
-import lets.code.better.todo.controller.TaskController;
-import lets.code.better.todo.dao.TaskDao;
-import lets.code.better.todo.facade.TaskFacade;
-import lets.code.better.todo.model.Task;
-import lets.code.better.todo.service.TaskService;
+import static lets.code.better.todo.task.TaskConstants.DESCRIPTION;
+import static lets.code.better.todo.task.TaskConstants.EXECUTOR;
+import static lets.code.better.todo.task.TaskConstants.TITLE;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import lets.code.better.todo.util.Transaction;
 
 import org.junit.Test;
 
 import br.com.caelum.vraptor.util.test.MockResult;
 
-public class TaskCreationTest {
-
+public final class TaskCreationTest {
+	
 	@Test
 	public void taskCreation() {
-		Task task = newTask();
+		Transaction.begin();
+		
+		final Task task = Task.create(TITLE, DESCRIPTION, EXECUTOR);
 
 		assertNotNull(task);
 		assertEquals(TITLE, task.getTitle());
-		assertEquals(DESCRIPTION, task.getDescr());
+		assertEquals(DESCRIPTION, task.getDescription());
 		assertEquals(EXECUTOR, task.getExecutor());
-		assertEquals(CREATED_AT, task.getCreatedAt());
+		assertNotNull(task.getCreatedAt());
+		assertNotNull(task.getId());
 		assertNull(task.getStartedAt());
 		assertNull(task.getFinishedAt());
+		
+		Transaction.commit();
+		
+		Transaction.begin();
+		final Task task2 = Task.findById(task.getId());
+		assertEquals(task, task2);
+		Transaction.commit();
+		
 	}
 
-	@Test
-	public void taskPersistence(){
-		TaskDao taskDao = new TaskDao();
-		Task task = newTask();
-		Transaction.begin();
-		taskDao.save(task);
-		Transaction.commit();
-		assertNotNull(task.getId());
-	}
-	
-	@Test
-	public void taskCreationFromService(){
-		TaskService taskService = new TaskService();
-		Transaction.begin();
-		Task task = taskService.createTask(TITLE,DESCRIPTION,EXECUTOR,CREATED_AT);
-		Transaction.commit();
-		assertNotNull(task.getId());
-		assertEquals(TITLE, task.getTitle());
-		assertEquals(DESCRIPTION, task.getDescr());
-		assertEquals(EXECUTOR, task.getExecutor());
-		assertEquals(CREATED_AT, task.getCreatedAt());
-		assertNull(task.getStartedAt());
-		assertNull(task.getFinishedAt());
-	}
-	
-	@Test
-	public void taskCreationFromFacade(){
-		TaskFacade taskFacade = new TaskFacade();
-		Transaction.begin();
-		Task task = taskFacade.createTask(TITLE,DESCRIPTION,EXECUTOR,CREATED_AT);
-		Transaction.commit();
-		assertNotNull(task.getId());
-		assertEquals(TITLE, task.getTitle());
-		assertEquals(DESCRIPTION, task.getDescr());
-		assertEquals(EXECUTOR, task.getExecutor());
-		assertEquals(CREATED_AT, task.getCreatedAt());
-		assertNull(task.getStartedAt());
-		assertNull(task.getFinishedAt());
-	}
-	
 	@Test
 	public void taskCreationFromController(){
 		MockResult result = new MockResult();
@@ -80,13 +49,4 @@ public class TaskCreationTest {
 		assertTrue( ( (String)result.included("message") ).contains(TITLE) );
 	}
 
-	private Task newTask() {
-		Task task = new Task();
-		task.setTitle(TITLE);
-		task.setDescr(DESCRIPTION);
-		task.setExecutor(EXECUTOR);
-		task.setCreatedAt(CREATED_AT);
-
-		return task;
-	}
 }

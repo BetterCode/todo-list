@@ -1,16 +1,15 @@
 package lets.code.better.todo.task;
 
-import static lets.code.better.todo.task.TaskConstants.CREATED_AT;
 import static lets.code.better.todo.task.TaskConstants.DESCRIPTION;
 import static lets.code.better.todo.task.TaskConstants.EXECUTOR;
 import static lets.code.better.todo.task.TaskConstants.TITLE;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import lets.code.better.todo.controller.TaskController;
-import lets.code.better.todo.facade.TaskFacade;
-import lets.code.better.todo.model.Task;
-import lets.code.better.todo.service.TaskService;
+
+import java.util.Date;
+
 import lets.code.better.todo.util.Transaction;
 
 import org.junit.Test;
@@ -21,39 +20,45 @@ public class TaskFinishedTest {
 
 
 	@Test
-	public void testFinishedFromService() throws Exception {
-		TaskService taskService = new TaskService();
-		
+	public void finishedShouldHaveStartDate() throws Exception {
 		Transaction.begin();
-		Task task = taskService.createTask(TITLE,DESCRIPTION, EXECUTOR, CREATED_AT);
+		Task task = Task.create(TITLE,DESCRIPTION, EXECUTOR);
 		assertFalse(task.isFinished());
 		
-		task = taskService.finish(task.getId());
+		task.finish();
 		Transaction.commit();
 		
 		assertTrue(task.isFinished());
 		assertNotNull(task.getFinishedAt());
+		
+		assertTrue(task.isStarted());
+		assertNotNull(task.getStartedAt());
 	}
 	
 	@Test
-	public void testFinishedFromFacade() throws Exception {
-		TaskFacade taskFacade = new TaskFacade();
-
+	public void finishShouldNotChangeStartDate() throws Exception {
 		Transaction.begin();
-		Task task = taskFacade.createTask(TITLE,DESCRIPTION, EXECUTOR, CREATED_AT);
-		
-		task = taskFacade.finish(task.getId());
+		Task task = Task.create(TITLE,DESCRIPTION, EXECUTOR);
+		assertFalse(task.isFinished());
+		task.start();
+		final Date start = task.getStartedAt();
+		task.finish();
 		Transaction.commit();
 		
+		assertTrue(task.isFinished());
 		assertNotNull(task.getFinishedAt());
+		
+		assertTrue(task.isStarted());
+		assertNotNull(task.getStartedAt());
+		assertEquals(start, task.getStartedAt());
 	}
+	
 	
 	@Test
 	public void testFinishedFromController() throws Exception {
-		TaskFacade taskFacade = new TaskFacade();
 		
 		Transaction.begin();
-		Task task = taskFacade.createTask(TITLE,DESCRIPTION, EXECUTOR, CREATED_AT);
+		Task task = Task.create(TITLE,DESCRIPTION, EXECUTOR);
 		Transaction.commit();
 		
 		MockResult result = new MockResult();

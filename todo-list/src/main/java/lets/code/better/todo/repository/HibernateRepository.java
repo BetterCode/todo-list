@@ -1,4 +1,4 @@
-package lets.code.better.todo.dao;
+package lets.code.better.todo.repository;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ import lets.code.better.todo.util.Transaction;
 
 import org.hibernate.Session;
 
-public class GenericDao {
+public class HibernateRepository {
 
 	public <T extends Serializable>void save(T entity) {
 		entityManager().persist(entity);
@@ -18,7 +18,7 @@ public class GenericDao {
 		entityManager().merge(entity);
 	}
 	
-	public <T extends Serializable> T find(Class<T> type, Integer id){
+	public <T extends Serializable> T findById(Class<T> type, Integer id){
 		return entityManager().find(type, id);
 	}
 	
