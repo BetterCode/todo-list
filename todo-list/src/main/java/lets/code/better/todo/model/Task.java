@@ -79,8 +79,14 @@ public class Task implements Serializable{
 	public void setFinishedAt(Date finishedAt) {
 		this.finishedAt = finishedAt;
 	}
-
 	
+	public boolean isStarted(){
+		return startedAt != null;
+	}
+	
+	public boolean isFinished(){
+		return finishedAt != null;
+	}
 
 	@Override
 	public int hashCode() {
