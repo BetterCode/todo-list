@@ -19,14 +19,17 @@ public class TaskController {
 		this.result = result;
 		taskFacade = new TaskFacade();
 	}
+	
+	public void create(){
+	}
 
-	public void createTask(String title, String description, String executor,
-			Date createdAt) {
+	public void createTask(String title, String description, String executor) {
 		try {
 			Transaction.begin();
-			taskFacade.createTask(title, description, executor, createdAt);
-			result.include("message", String.format("Task %s created.", title));
+			taskFacade.createTask(title, description, executor, new Date());
+			result.include("message", String.format("Task '%s' created.", title));
 			Transaction.commit();
+			result.redirectTo(TaskController.class).list();
 		} finally {
 			Transaction.rollbackIfActive();
 		}

@@ -1,4 +1,4 @@
-<project name="prototipo-web" basedir="." default="install">
+<project name="todo-list" basedir="." default="install">
 
 	<property file="../build.properties" />
 
@@ -7,6 +7,6 @@
 
 	<property name="module-dir" value="." />
 
-	<property name="war.file.name" value="protptipo-web.war" />
+	<property name="war.file.name" value="todo-list.war" />
 
 </project>

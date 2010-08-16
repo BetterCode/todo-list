@@ -75,7 +75,7 @@ public class TaskCreationTest {
 		MockResult result = new MockResult();
 		TaskController taskController = new TaskController(result);
 
-		taskController.createTask(TITLE,DESCRIPTION,EXECUTOR,CREATED_AT);
+		taskController.createTask(TITLE,DESCRIPTION,EXECUTOR);
 		
 		assertTrue( ( (String)result.included("message") ).contains(TITLE) );
 	}
