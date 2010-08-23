@@ -3,4 +3,5 @@
 /todo-list/.classpath
 /todo-list/.project
 *.swp
+build.properties
 
