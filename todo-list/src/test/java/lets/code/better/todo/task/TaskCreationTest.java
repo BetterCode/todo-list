@@ -7,17 +7,16 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import lets.code.better.todo.util.Transaction;
 
 import org.junit.Test;
 
 import br.com.caelum.vraptor.util.test.MockResult;
 
-public final class TaskCreationTest {
+public final class TaskCreationTest extends TransactionTest{
+	
 	
 	@Test
 	public void taskCreation() {
-		Transaction.begin();
 		
 		final Task task = Task.create(TITLE, DESCRIPTION, EXECUTOR);
 
@@ -30,13 +29,8 @@ public final class TaskCreationTest {
 		assertNull(task.getStartedAt());
 		assertNull(task.getFinishedAt());
 		
-		Transaction.commit();
-		
-		Transaction.begin();
 		final Task task2 = Task.findById(task.getId());
 		assertEquals(task, task2);
-		Transaction.commit();
-		
 	}
 
 	@Test

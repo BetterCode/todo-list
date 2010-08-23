@@ -7,23 +7,19 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import lets.code.better.todo.util.Transaction;
-
 import org.junit.Test;
 
 import br.com.caelum.vraptor.util.test.MockResult;
 
 
-public class TaskListTest {
+public class TaskListTest extends TransactionTest{
 
 	@Test
 	public void taskListing() throws Exception {
 		
-		Transaction.begin();
 		Task task1 = newTask(1);
 		Task task2 = newTask(2);
 		List<Task> tasks = Task.list();
-		Transaction.commit();
 
 		assertTrue(tasks.contains(task1));
 		assertTrue(tasks.contains(task2));
@@ -31,10 +27,8 @@ public class TaskListTest {
 	
 	@Test
 	public void taskListingFromController() throws Exception {
-		Transaction.begin();
 		Task task1 = newTask(1);
 		Task task2 = newTask(2);
-		Transaction.commit();
 		
 		MockResult result = new MockResult();
 		TaskController taskController = new TaskController(result);
