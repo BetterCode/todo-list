@@ -14,7 +14,7 @@ public class TransactionTest {
 
 	@After
 	public void endTransactino() {
-		Transaction.commit();
+		Transaction.rollbackIfActive();
 	}
 
 }
