@@ -3,4 +3,4 @@
 /todo-list/.classpath
 /todo-list/.project
 *.swp
-
+/todo-list/bin
