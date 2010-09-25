@@ -4,4 +4,4 @@
 /todo-list/.project
 *.swp
 build.properties
-
+/todo-list/bin
