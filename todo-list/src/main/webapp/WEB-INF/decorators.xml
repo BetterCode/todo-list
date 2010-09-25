@@ -2,6 +2,7 @@
 	<excludes>
 		<pattern>/panel/listTitles*</pattern>
 		<pattern>/panel/manage*</pattern>
+		<pattern>/task/show*</pattern>
     </excludes>
     
     <decorator name="main" page="main.jsp">

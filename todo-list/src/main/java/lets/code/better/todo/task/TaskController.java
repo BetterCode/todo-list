@@ -14,13 +14,14 @@ public class TaskController {
 		this.result = result;
 	}
 
-	public void create() {
-	}
-
-	public void createTask(String title, String description, String executor) {
-		Task.create(title, description, executor);
+	public void create(String title, String description, String executor) {
+		Task task = Task.create(title, description, executor);
 		result.include("message", String.format("Task '%s' created.", title));
-		result.redirectTo(TaskController.class).list();
+		result.redirectTo(TaskController.class).show(task);
+	}
+	
+	public Task show(Task task){
+		return task;
 	}
 
 	public List<Task> list() {
