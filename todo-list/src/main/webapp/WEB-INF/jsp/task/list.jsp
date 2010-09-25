@@ -33,7 +33,7 @@
 
 <div id="taskList">
 	<c:forEach items="${taskList}" var="task">
-		<ul>
+		<ul id="task${task.id}">
 		  <li>
 		  	<h2>${task.title}</h2>
 		  </li>
@@ -59,11 +59,11 @@
 		  <div style="padding:5px">
 		  <c:if test="${not task.started}">
 		    |
-		  	<a style="color:#5A5" href="start?id=${task.id}">start</a> 
+		  	<a style="color:#5A5" task_id="${task.id}" id="start" href="#">start</a> 
 		  </c:if>
 		  <c:if test="${not task.finished}">
 		  	|
-		 	<a style="color:#A55" href="finish?id=${task.id}">finish</a>
+		 	<a style="color:#A55" task_id="${task.id}" id="finish" href="#">finish</a>
 		 	|
 		  </c:if>
 		 	<br/>
@@ -81,5 +81,21 @@
 		$.post('create', $('#createForm').serialize(), function(data){
 			 $("#taskList").html(data + $("#taskList").html());
 		});
+	});
+	
+	$('#taskList').delegate('#start', 'click', function(){
+		var task_id = $(this).attr('task_id')
+		$.post('start', {id : task_id}, function(data){
+			var task = "#task" + task_id;
+			$(task).html(data);
+		})
+	});
+	
+	$('#taskList').delegate('#finish', 'click', function(){
+		var task_id = $(this).attr('task_id')
+		$.post('finish', {id : task_id}, function(data){
+			var task = "#task" + task_id;
+			$(task).html(data);
+		})
 	});
 </script>

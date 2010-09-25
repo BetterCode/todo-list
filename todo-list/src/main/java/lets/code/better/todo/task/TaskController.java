@@ -33,14 +33,14 @@ public class TaskController {
 		final Task task = Task.findById(id).start();
 		result.include("message", String.format("Task '%s' started.", task
 				.getTitle()));
-		result.redirectTo(TaskController.class).list();
+		result.redirectTo(TaskController.class).show(task);
 	}
 
 	public void finish(Integer id) {
 		final Task task = Task.findById(id).finish();
 		result.include("message", String.format("Task '%s' finished.", task
 				.getTitle()));
-		result.redirectTo(TaskController.class).list();
+		result.redirectTo(TaskController.class).show(task);
 	}
 
 }

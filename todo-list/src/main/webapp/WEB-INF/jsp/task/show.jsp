@@ -1,4 +1,7 @@
-<ul>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="f" %>
+
+<ul id="task${task.id}">
   <li>
   	<h2>${task.title}</h2>
   </li>
@@ -24,11 +27,11 @@
   <div style="padding:5px">
   <c:if test="${not task.started}">
     |
-  	<a style="color:#5A5" href="start?id=${task.id}">start</a> 
+  	<a style="color:#5A5" task_id=${task.id} id="start" href="#">start</a> 
   </c:if>
   <c:if test="${not task.finished}">
   	|
- 	<a style="color:#A55" href="finish?id=${task.id}">finish</a>
+ 	<a style="color:#A55" task_id="${task.id}" id="finish" href="#">finish</a>
  	|
   </c:if>
  	<br/>
