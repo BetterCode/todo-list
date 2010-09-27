@@ -27,11 +27,11 @@
   <div style="padding:5px">
   <c:if test="${not task.started}">
     |
-  	<a style="color:#5A5" task_id=${task.id} id="start" href="#">start</a> 
+  	<a style="color:#5A5" id="start_${task.id}" href="#">start</a> 
   </c:if>
   <c:if test="${not task.finished}">
   	|
- 	<a style="color:#A55" task_id="${task.id}" id="finish" href="#">finish</a>
+ 	<a style="color:#A55" id="finish_${task.id}" href="#">finish</a>
  	|
   </c:if>
  	<br/>
